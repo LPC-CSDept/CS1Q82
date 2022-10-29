@@ -5,30 +5,54 @@
 #include "main.hpp"
 // tests for exercise 1
 
-TEST_CASE("Ex1 countsubstring() ", "[example]")
+TEST_CASE("Ex1 emailcheck() ", "[example]")
 {
-	int cnt;
+	int ret;
+	string email;
 
-	cnt = countsubstring("th");
-	cout << "The count of occurrence " << cnt << endl;
+	email = "ABCDEF@company.com";
+	ret = emailcheck(email);
+	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
 
-	INFO("The result should  17\n");
-	REQUIRE(cnt == 17);
+	INFO("The result should  1\n");
+	REQUIRE(ret == 1);
 	cout << "--------------------------------------------------\n";
 
-	// REQUIRE(number[idx] == usernum);
+	email = "ABC@company.com";
+	ret = emailcheck(email);
+	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
+
+	INFO("The result should  0\n");
+	REQUIRE(ret == 0);
+	cout << "--------------------------------------------------\n";
+
+	email = "johnsmith@company.io.edu";
+	ret = emailcheck(email);
+	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
+
+	INFO("The result should  1\n");
+	REQUIRE(ret == 1);
+	cout << "--------------------------------------------------\n";
 }
 
-TEST_CASE("Ex2 countsubstring() ", "[example]")
+TEST_CASE("Ex2 emailcheck() ", "[example]")
 {
-	int cnt;
+	int ret;
+	string email;
 
-	cnt = countsubstring("la");
-	cout << "The count of occurrence " << cnt << endl;
+	email = "john@company.server.io";
+	ret = emailcheck(email);
+	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
 
-	INFO("The result should  5\n");
-	REQUIRE(cnt == 5);
+	INFO("The result should  0\n");
+	REQUIRE(ret == 0);
 	cout << "--------------------------------------------------\n";
 
-	// REQUIRE(number[idx] == usernum);
+	email = "john@company.server";
+	ret = emailcheck(email);
+	cout << "test email string is " << email << "\tYour return value is: " << ret << endl;
+
+	INFO("The result should  0\n");
+	REQUIRE(ret == 0);
+	cout << "--------------------------------------------------\n";
 }
